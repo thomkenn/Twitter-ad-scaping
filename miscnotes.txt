@@ -1,0 +1,19 @@
+kamala harris, https://ads.twitter.com/transparency/KamalaHarris
+beto o rourke, https://ads.twitter.com/transparency/BetoORourke
+joe biden, https://ads.twitter.com/transparency/joebiden
+bernie sanders, https://ads.twitter.com/transparency/BernieSanders
+elizabeth warren, https://ads.twitter.com/transparency/ewarren
+amy klobuchar, https://ads.twitter.com/transparency/amyklobuchar
+cory booker, https://ads.twitter.com/transparency/CoryBooker
+kirstin gillibrand, https://ads.twitter.com/transparency/SenGillibrand
+sherrod brown, https://ads.twitter.com/transparency/sherrodbrown
+mike bloomberg, https://ads.twitter.com/transparency/MikeBloomberg
+oprah winfrey, https://ads.twitter.com/transparency/oprah
+hillary clinton,https://ads.twitter.com/transparency/HillaryClinton
+
+politicians name
+
+instructions:
+download and parse the information with phantom.js
+
+check the notepads and send them to mysql
