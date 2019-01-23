@@ -1,5 +1,5 @@
 # Twitter-ad-scaping
-Uses Phantom.JS and node.js to create a pipeline for twitter ad data on election candidates. 
+Uses Phantom.JS and Node.js to create a pipeline for twitter ad data on election candidates. 
 
 The Twitter ad transparency pages for information on political candidates is sadly lacking in functionality. It doesnt have an API and it doesnt tell you historic data for a candidate. Using this tool, you can take daily snapshots of political candidates and store their total campaign spening in a database for later use. With daily snapshots of total spend, you can see how much they are spending every day on political campaigns. 
 
