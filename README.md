@@ -15,7 +15,7 @@ create table Bernie (date varchar(5), amount float(10));
 create table Warren (date varchar(5), amount float(10));
 create table Klobuchar (date varchar(5), amount float(10));
 ```
-Install phantomjs, node.js, and screen.
+Install [Phantom.js](http://phantomjs.org/download.html#linux-64-bit), [Node.js](https://nodejs.org/en/download/), and [Screen](https://nodejs.org/en/download/), and ensure the paths for all 3 are properly set.
 
 Plug in your credentials for your MYSQL db into auth.json
 
