@@ -14,7 +14,7 @@ setInterval(function(){
 	twitteranalysis("https://ads.twitter.com/transparency/BernieSanders","Bernie"); //no
 	twitteranalysis("https://ads.twitter.com/transparency/ewarren","Warren"); //no
 	twitteranalysis("https://ads.twitter.com/transparency/amyklobuchar","Klobuchar"); //no
-	},86400000);
+	},30000);
 
 function twitteranalysis(url,name) {
 var page = require('webpage').create();
@@ -54,6 +54,7 @@ page.open(url, function() {
 				x = parseFloat(x);
 				content = name + " " + x;
 				fs.write(path, content + ',', 'a');
+				console.log(content);
 				page.close();
 				return;
 			}

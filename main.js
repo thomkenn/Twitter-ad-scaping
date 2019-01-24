@@ -7,7 +7,7 @@ var auth = require('./auth.json');
 var mysql = require('mysql');
 var fstimeout = 0;
 var content = 'hello';
-
+var diditread = 0;
 var con = mysql.createConnection({
 	host: auth.SQLhost,
 	user: auth.SQLuser,
@@ -22,18 +22,32 @@ fs.watch(path, (event, filename) => {
 			setTimeout(function() {
 				console.log("inner called");
 				fstimeout = 0;
-				readit();
-				fs.writeFile(path, '', function(){console.log('done')})
+				fstimeout = failsafe();
+				diditread = readit();
 			}, 45000);
+			setTimeout(function() {
+				if (diditread == 1){
+					fs.writeFile(path, '', function(){console.log('done')})
+					diditread = 0;
+				}
+			}, 75000);
+			
 			fstimeout = 1;
 	}
   }
 });
 
+//Just in case previous loop gets caught in bad logic 
+function failsafe() {
+	setTimeout( function() {
+		return 0;
+	}, 600000);
+}
+
 function readit() {
 fs.readFile(path, (err, data) => { 
     if (err) throw err; 
-	
+	var checkifran = 0;
 	x = data.toString();
 	x = x.split(',');
 
@@ -52,9 +66,14 @@ fs.readFile(path, (err, data) => {
 			con.query(temp);
 			con.query("commit");
 			console.log(temp);
+			checkifran = 1
 		}	
 			//console.log("new line");
 	}
+	if (checkifran == 1)
+		return 1;
+	else
+		return 0;
     //console.log(data); 
 }) 
 }
