@@ -8,6 +8,7 @@ var mysql = require('mysql');
 var fstimeout = 0;
 var content = 'hello';
 var diditread = 0;
+
 var con = mysql.createConnection({
 	host: auth.SQLhost,
 	user: auth.SQLuser,
@@ -15,23 +16,24 @@ var con = mysql.createConnection({
 	database: auth.SQLdatabase
 });
 
+//Watch file, detect changes
 fs.watch(path, (event, filename) => {
   if (filename) {
+		console.log("calling file watch with timeout == " + fstimeout);
 		if (fstimeout == 0){
 			console.log("file changed");
 			setTimeout(function() {
 				console.log("inner called");
 				fstimeout = 0;
-				fstimeout = failsafe();
-				diditread = readit();
+				readit();
+				setTimeout(function() {
+					console.log("destroy file? diditread == " + diditread);
+					if (diditread == 1){
+						fs.writeFile(path, '', function(){console.log('done')})
+						diditread = 0; }
+					}, 10000);
 			}, 45000);
-			setTimeout(function() {
-				if (diditread == 1){
-					fs.writeFile(path, '', function(){console.log('done')})
-					diditread = 0;
-				}
-			}, 75000);
-			
+			console.log("setting fstimeout");
 			fstimeout = 1;
 	}
   }
@@ -40,7 +42,11 @@ fs.watch(path, (event, filename) => {
 //Just in case previous loop gets caught in bad logic 
 function failsafe() {
 	setTimeout( function() {
-		return 0;
+		if (fstimeout == 1)
+		{
+			fstimeout = 0; 
+			console.log("failsafe called");
+		}
 	}, 600000);
 }
 
@@ -68,12 +74,15 @@ fs.readFile(path, (err, data) => {
 			console.log(temp);
 			checkifran = 1
 		}	
-			//console.log("new line");
 	}
+	console.log("checkifran == " + checkifran);
 	if (checkifran == 1)
-		return 1;
+	{
+		console.log("returning 1");
+		diditread = 1;
+	}
 	else
-		return 0;
+		diditread = 0;
     //console.log(data); 
 }) 
 }
