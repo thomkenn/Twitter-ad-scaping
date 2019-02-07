@@ -10,6 +10,7 @@ setInterval(function(){
 	var d = new Date();
 	d = (1 + d.getMonth()) + "-" + d.getDate();
 	fs.write(path, "\n" + d + ",", 'a');
+	twitteranalysis("https://ads.twitter.com/transparency/TulsiGabbard", "Tulsi");
 	//twitteranalysis("https://ads.twitter.com/transparency/sherrodbrown", "Brown");
 	twitteranalysis("https://ads.twitter.com/transparency/SenGillibrand", "Gillibrand");  //no i assume
 	twitteranalysis("https://ads.twitter.com/transparency/KamalaHarris", "Kamala");
@@ -17,7 +18,7 @@ setInterval(function(){
 	twitteranalysis("https://ads.twitter.com/transparency/BernieSanders","Bernie"); //no
 	twitteranalysis("https://ads.twitter.com/transparency/ewarren","Warren"); //no
 	twitteranalysis("https://ads.twitter.com/transparency/amyklobuchar","Klobuchar"); //no
-	},86400000);
+	},45000);
 
 function twitteranalysis(url,name) {
 	var page = require('webpage').create();
