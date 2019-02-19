@@ -36,5 +36,4 @@ node main.js
 
 And you're done. The main.js will check the output.csv for any changes and update your db as soon as a change occurs. After reading, main.js will wipe the output.csv and go back into sleep mode, waiting for changes.
 
-This project is still firmly in alpha, and contains several critical bugs that are more likely to occur the longer it has been running, and is dependent on phantom.js, a project that is no longer active and is not recieving updates. Use at your own risk. 
-
+This project is still firmly in alpha, but its been working reliably for the past several weeks. 
