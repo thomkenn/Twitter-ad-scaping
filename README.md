@@ -36,4 +36,4 @@ node main.js
 
 And you're done. The main.js will check the output.csv for any changes and update your db as soon as a change occurs. After reading, main.js will wipe the output.csv and go back into sleep mode, waiting for changes.
 
-This project is still firmly in alpha, but its been working reliably for the past several weeks. 
+This project is firmly in Alpha, features that would be nice to include would be a way to load Twitter accounts from a json object.
